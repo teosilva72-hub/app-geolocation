@@ -1,0 +1,41 @@
+@media (max-width: 500px) {
+    .list>.nav-item {
+        font-size: 20pt;
+        color: black;
+    }
+
+    .nav-link:hover {
+        color: red !important;
+        font-size: 22pt !important;
+    }
+    .search{
+        width: 50% !important;
+    }
+}
+.nav-link:hover {
+    color: red !important;
+    font-size: 22pt !important;
+}
+.search{
+    width: 50% !important;
+}
+.nav-link{
+    color: black !important;
+    font-size: 15pt !important;
+}
+li{
+    margin-left: 10px;
+    border-radius: 10px;
+}
+
+.search{
+    width: 50% !important;
+}
+
+.search{
+    width: 30% !important;
+}
+
+#notification > button{
+    margin-left: 20px;
+}
