@@ -3,22 +3,22 @@ import Footer from "../component/template/footer";
 import '../../assets/css/global.css';
 import img from '../../assets/img/01.jpg';
 import userAPI from '../../../api/user';
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 
 export default function WidgetInit(props: any) {
 
     const [users, setUsers] = useState<any>();
 
-    const allUsers = async () => {
-        const all = await userAPI.getAllUsers();
-        setUsers(all);
-        return users;
-    }
-
-    (async () => {
-        allUsers()
-    })();
+    useEffect(()=>{
+        const allUsers = async () => {
+            const all = await userAPI.getAllUsers();
+            setUsers(all);
+            return users;
+        }
+        allUsers();
+    },[]);
+    
     return (
         <>
             <div className="container-fluid">

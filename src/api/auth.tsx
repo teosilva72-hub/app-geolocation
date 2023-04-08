@@ -26,11 +26,11 @@ export default new class Auth {
         axios.defaults.headers.common = { 'Authorization': `Bearer ${localStorage.getItem('token')}` }
     }
 
-    async verifyToken(page: string, id: number) {
-        
+    async verifyToken(page: string) {
+        console.log(page)
         await this.setToken(`${process.env.REACT_APP_LOCAL_HOST}${page}`);
         try {
-            const res: any = await axios.get(`${process.env.REACT_APP_HOST}${process.env.REACT_APP_GET_USER}${id}`);
+            const res: any = await axios.get(`${process.env.REACT_APP_HOST}${process.env.REACT_APP_GET_USER}`);
             return res;
         } catch (e: any) {
             return false;

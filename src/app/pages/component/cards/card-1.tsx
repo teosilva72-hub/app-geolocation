@@ -4,7 +4,7 @@ export default function Card1(props: any) {
     
     let img = '';
     //console.log(props.img)
-    if(props.img == `${process.env.REACT_APP_IMG_STANDARD}`) img = `${process.env.REACT_APP_HOST}img/${props.img}`;
+    if(props.img == `${process.env.REACT_APP_IMG_DEFAULT}`) img = `${process.env.REACT_APP_HOST}${props.img}`;
     return (
         <>
             <div className="col-6 col-sm-6 col-md-4 col-lg-2">

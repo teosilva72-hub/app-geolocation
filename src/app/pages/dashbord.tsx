@@ -30,12 +30,17 @@ export default function Dashbord() {
             localStorage.clear();
         }, 3000);
     } else {
+        
         (async () => {
-            const data = await auth.verifyToken(`${process.env.REACT_APP_PAGE_DASHBORD}`, Number(res.id));
+            const data = await auth.verifyToken('dashbord');
             if (!data) {
                 setTimeout(() => {
                     navigate('/');
                 }, 2000);
+                toast.error(`Faça login novamente`, {
+                    position: "bottom-center",
+                    theme: "colored",
+                });
                 localStorage.clear();
             } else {
                 localStorage.setItem('userName', `${res.name}`)
