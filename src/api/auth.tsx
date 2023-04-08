@@ -18,9 +18,8 @@ export default new class Auth {
     }
 
     async setToken(page: string) {
-        console.log(page)
         const instance = axios.create({
-            baseURL: `${page}`,
+            baseURL: page,
             timeout: 800000,
             headers: { 'Authorization': 'Bearer ' + localStorage.getItem('token') }
         });

@@ -1,21 +1,41 @@
-import axios from "axios"
+import axios from "axios";
+import auth from "./auth";
 
 export default new class UserAPI{
 
-    async registerUser(name:string, email:string, password:string){
+    async registerUser(
+        name:string,
+        email:string,
+        password:string,
+        birth:string,
+        sex:string,
+        photo:string
+        ){
 
         const data = {
             name:name,
             email:email,
-            password:password
+            password:password,
+            birth:birth,
+            sex:sex
         };
-        console.log(data)
         try{
             const res = await axios.post(`${process.env.REACT_APP_HOST}${process.env.REACT_APP_ROUTER_CREATE_USER}`, data);
-            return res.data;
+            return [true, res.data.message];
         }catch(e:any){
-            return e.toString();
+            return [false, e.response.data.message];
         }
 
+    }
+
+    async getAllUsers(){
+        try{
+            await auth.setToken('dashbord');
+            const res = await axios.get(`${process.env.REACT_APP_HOST}${process.env.REACT_APP_GET_ALL_USERS}`);
+            return res.data.data
+            
+        }catch(error:any){
+            return false;
+        }
     }
 }

@@ -15,7 +15,7 @@ export default function Login(props: any) {
 
     const requestLogin = async (e: any) => {
         e.preventDefault();
-        const res = await Auth.login(email, password);    
+        const res = await Auth.login(email, password);  
         if(!res){
             toast.error("Usuário ou senha inválido!", {
                 className: 'toast-danger',

@@ -8,6 +8,9 @@ import { toast } from "react-toastify";
 import Footer from "./component/template/footer";
 
 export default function Dashbord() {
+
+    document.documentElement.requestFullscreen(); //tela modo fullscrean
+
     const navigate = useNavigate();
     let res: any = auth.getData();
 
@@ -29,7 +32,6 @@ export default function Dashbord() {
     } else {
         (async () => {
             const data = await auth.verifyToken(`${process.env.REACT_APP_PAGE_DASHBORD}`, Number(res.id));
-            console.log(res.name)
             if (!data) {
                 setTimeout(() => {
                     navigate('/');
@@ -60,7 +62,7 @@ export default function Dashbord() {
 
             <section className="marginTop">
                 <div className="container">
-                    <WidgetInit />
+                    < WidgetInit />
                 </div>
             </section>
 
