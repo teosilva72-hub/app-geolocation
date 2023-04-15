@@ -1,7 +1,7 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Login from './app/pages/login';
-import Dashbord from './app/pages/dashbord';
+import Index from './app/pages';
 import RouterPrivate from './app/routerPrivate';
 import auth from './api/auth';
 import Perfil from './app/pages/perfil';
@@ -13,6 +13,7 @@ function App(e: any) {
     return true;
   }
   const res = check();
+
   return (
     <div className="App">
 
@@ -20,10 +21,10 @@ function App(e: any) {
 
         <Route path="/" element={<Login />} />
         <Route
-          path='/dashbord'
+          path='/index'
           element={
             <RouterPrivate.DashbordPrivate user={res}>
-              <Dashbord />
+              <Index />
             </RouterPrivate.DashbordPrivate>
           } />
 

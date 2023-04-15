@@ -2,7 +2,7 @@ import { Navigate } from "react-router";
 
 const DashbordPrivate = ({ user, children }:any) => {
     if (!user) {
-      return <Navigate to="/dashboard" replace />;
+      return <Navigate to="/index" replace />;
     }
     return children;
 };

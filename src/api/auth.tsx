@@ -27,12 +27,11 @@ export default new class Auth {
     }
 
     async verifyToken(page: string) {
-        console.log(page)
         await this.setToken(`${process.env.REACT_APP_LOCAL_HOST}${page}`);
         try {
             const res: any = await axios.get(`${process.env.REACT_APP_HOST}${process.env.REACT_APP_GET_USER}`);
             return res;
-        } catch (e: any) {
+        } catch (e: any) { 
             return false;
         }
     }

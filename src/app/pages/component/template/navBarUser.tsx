@@ -28,7 +28,7 @@ export default function NavBarUser(props: any) {
         });
 
         setTimeout(() => {
-            navigate('/dashbord');
+            navigate('/index');
         }, 0);
 
         closeOffCanvas();
@@ -78,7 +78,7 @@ export default function NavBarUser(props: any) {
                                 <span className="visually-hidden">unread messages</span>
                             </span>
                         </button>
-                        <button type="button" className="btn btn-outline-warning p-2">R$ 5.950,99</button>
+                        <button type="button" className="btn btn-outline-warning p-2"><i className="bi bi-bus-front-fill"></i></button>
                         <button type="button" className="btn btn-outline-danger p-2"><i className="bi bi-funnel-fill"></i></button>
                     </div>
                     <div className="offcanvas offcanvas-start" data-bs-scroll="true" data-bs-backdrop="false" id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
@@ -92,10 +92,10 @@ export default function NavBarUser(props: any) {
                                     <a className={`nav-link dashbord`} aria-current="page" href="#" onClick={home} ><i className="bi bi-house-fill"></i> Home</a>
                                 </li>
                                 <li className="nav-item">
-                                    <a className="nav-link carteira" href="#"><i className="bi bi-wallet-fill"></i> Carteira</a>
+                                    <a className="nav-link carteira" href="#"><i className="bi bi-wallet-fill"></i> Recargas</a>
                                 </li>
                                 <li className="nav-item">
-                                    <a className="nav-link galeria" href="#"><i className="bi bi-image-fill"></i> Galeria</a>
+                                    <a className="nav-link galeria" href="#"><i className="bi bi-newspaper"></i> Noticias</a>
                                 </li>
                                 <li className="nav-item">
                                     <a className={`nav-link perfil`} href='#' onClick={perfil}><i className="bi bi-person-circle"></i> Perfil</a>

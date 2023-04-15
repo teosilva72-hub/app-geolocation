@@ -33,7 +33,7 @@ export default function Login(props: any) {
             });
             setTimeout(() => {
                 //alert()
-                navigate('/dashbord');
+                navigate('/index');
             }, 3000)
             return true;
         }

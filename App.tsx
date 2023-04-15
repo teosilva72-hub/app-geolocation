@@ -20,7 +20,7 @@ function App(e: any) {
 
         <Route path="/" element={<Login />} />
         <Route
-          path='/dashbord'
+          path='/index'
           element={
             <RouterPrivate.DashbordPrivate user={res}>
               <Dashbord />
