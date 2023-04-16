@@ -59,21 +59,21 @@ export default function Dashbord() {
         }
     }
 
-
-    async function location(){
-        await navigator.geolocation.getCurrentPosition((e:any) => {
+    setInterval(()=>{
+        navigator.geolocation.getCurrentPosition((e:any) => {
             localStorage.setItem("lat", `${e.coords.latitude}`);
             localStorage.setItem("log", `${e.coords.longitude}`);
-            localStorage.setItem("precision", e.coords.accuracy)
+            localStorage.setItem("precision", e.coords.accuracy);
         });
-
+    },1000)
+    async function location(){
         const res = await user.saveLocation({
             lat: localStorage.getItem('lat'),
             lng: localStorage.getItem('log'),
             precision: localStorage.getItem('precision')
-
         });
-        console.log(res)
+
+        if(!res) error('não foi possível localizar o seu dispositivo.')
     }
 
     (async()=>{
