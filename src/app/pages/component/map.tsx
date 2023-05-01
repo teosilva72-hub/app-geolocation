@@ -5,7 +5,7 @@ import 'leaflet/dist/leaflet.css';
 export default function Map(props: any) {
   return (
     <MapContainer center={{ lat: props.lat, lng: props.log }}
-      zoom={15}
+      zoom={30}
       scrollWheelZoom={true}>
       <TileLayer
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
