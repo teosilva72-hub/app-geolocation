@@ -5,19 +5,22 @@ import $ from 'jquery';
 
 export default function RegisterUser(props: any) {
     const [name, setName] = useState<string>('');
+    const [lastName, setLastName] = useState<string>('');
     const [email, setEmail] = useState<string>('');
     const [password, setPassword] = useState<string>('');
     const [repeatPass, setRepeatPass] = useState<string>('');
     const [sexo, setSexo] = useState<string>('');
     const [birth, setBirth] = useState<string>('');
     const [photo, setPhoto] = useState<any>('');
-
+    const classPass = $('.repeatPass');
     const register = async (e: any) => {
 
         e.preventDefault();
 
         if (password == repeatPass) {
-            const req = await UserAPI.registerUser( name, email, password, birth, sexo, photo);
+            const req = await UserAPI.registerUser(
+                name, lastName, email, password, birth, sexo, photo
+            );
             if (!req[0]) {
                 toast.warning(req[1], {
                     className: 'toast-warning',
@@ -25,7 +28,10 @@ export default function RegisterUser(props: any) {
                     position: 'top-center',
                 });
             } else {
-                $('.btn-close').click();
+                classPass.addClass('ok');
+                setTimeout(() => {
+                    $('.btn-close').click();
+                }, 2000);
                 toast.success(req[1], {
                     className: 'toast-success',
                     theme: 'colored',
@@ -33,10 +39,11 @@ export default function RegisterUser(props: any) {
                 });
             }
         } else {
+            classPass.addClass('error');
             toast.error('Senhas devem ser iguais!', {
                 className: 'toast-danger',
                 theme: 'colored',
-                position: 'top-left',
+                position: 'bottom-center',
             });
         }
     }
@@ -59,6 +66,13 @@ export default function RegisterUser(props: any) {
                                         <input type="text" className="form-control mb-3"
                                             value={name}
                                             onChange={(e: any) => { setName(e.target.value) }}
+                                        />
+                                    </div>
+                                    <div className="col-12">
+                                        <span>Sobrenome</span>
+                                        <input type="text" className="form-control mb-3"
+                                            value={lastName}
+                                            onChange={(e: any) => { setLastName(e.target.value) }}
                                         />
                                     </div>
                                     <div className="col-12">
@@ -92,14 +106,14 @@ export default function RegisterUser(props: any) {
                                     </div>
                                     <div className="col-12">
                                         <span>Senha</span>
-                                        <input type="password" className="form-control mb-3"
+                                        <input type="password" className="repeatPass form-control mb-3"
                                             value={password}
                                             onChange={(e: any) => setPassword(e.target.value)}
                                         />
                                     </div>
                                     <div className="col-12">
                                         <span>Repita a senha</span>
-                                        <input type="password" className="form-control mb-3"
+                                        <input type="password" className="repeatPass form-control mb-3"
                                             value={repeatPass}
                                             onChange={(e: any) => setRepeatPass(e.target.value)}
                                         />

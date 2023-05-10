@@ -15,3 +15,10 @@ html, body{
 button{
     color: white;
 }
+
+.repeatPass.error{
+    border: red 2px solid;
+}
+.repeatPass.ok{
+    border: green 2px solid;
+}

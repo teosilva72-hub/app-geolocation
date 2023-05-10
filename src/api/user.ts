@@ -5,6 +5,7 @@ export default new class UserAPI {
 
     async registerUser(
         name: string,
+        lastName: string,
         email: string,
         password: string,
         birth: string,
@@ -14,6 +15,7 @@ export default new class UserAPI {
 
         const data = {
             name: name,
+            lastName: lastName,
             email: email,
             password: password,
             birth: birth,
