@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import auth from "../../api/auth";
 import { useNavigate } from 'react-router-dom';
 import NavBar from "./component/template/navBarUser";
@@ -11,7 +11,6 @@ import user from "../../api/user";
 
 
 export default function Dashbord() {
-    const position = [51.505, -0.09]
     //document.documentElement.requestFullscreen(); //tela modo fullscrean
 
     const navigate = useNavigate();
@@ -59,27 +58,29 @@ export default function Dashbord() {
         }
     }
 
-    setInterval(()=>{
-        navigator.geolocation.getCurrentPosition((e:any) => {
+    setInterval(() => {
+        navigator.geolocation.getCurrentPosition((e: any) => {
             localStorage.setItem("lat", `${e.coords.latitude}`);
             localStorage.setItem("log", `${e.coords.longitude}`);
             localStorage.setItem("precision", e.coords.accuracy);
         });
-    },1000)
-    async function location(){
+    }, 1000);
+    
+    async function location() {
         const res = await user.saveLocation({
             lat: localStorage.getItem('lat'),
             lng: localStorage.getItem('log'),
             precision: localStorage.getItem('precision')
         });
 
-        if(!res) error('não foi possível localizar o seu dispositivo.')
+        if (!res) error('não foi possível localizar o seu dispositivo.')
     }
 
-    (async()=>{
+    (async () => {
         await init();
         await location();
     })();
+
 
     return (
         <>
