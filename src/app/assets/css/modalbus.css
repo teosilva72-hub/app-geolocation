@@ -1,0 +1,21 @@
+
+.modal-backdrop {
+    display: none;
+}
+
+.bi-info-square-fill{
+    font-size: 20pt;
+}
+
+.txtTitle{
+    position: relative;
+    top: 22%;
+}
+
+.modal-header{
+    background-color: red;
+}
+
+.el.error{
+    border: solid 2px red;
+}

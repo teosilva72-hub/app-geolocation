@@ -3,12 +3,13 @@ import { toast } from 'react-toastify';
 import { useNavigate, useNavigation } from 'react-router-dom';
 import NavBar from '../../../interface/NavBar';
 import { useState } from 'react';
+import ModalBus from '../bus/modaBus';
 
 export default function NavBarUser(props: any) {
     const navigate = useNavigate();
 
     setTimeout(() => {
-        const path = window.location.hash.replace('#/','');
+        const path = window.location.hash.replace('#/', '');
         let el = document.querySelector(`.${path}`);
         el?.classList.add('d-none');
     }, 100);
@@ -67,19 +68,25 @@ export default function NavBarUser(props: any) {
         <>
             <nav className="navbar navbar-expand-xxxl bg-body-tertiary bg-dark fixed-top">
                 <div className="container-fluid">
-                    <button className="navbar-toggler bg-secondary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling">
+                    <button className="navbar-toggler bg-secondary"
+                        type="button" data-bs-toggle="offcanvas"
+                        data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling">
                         <span className="navbar-toggler-icon"></span>
                     </button>
                     <div id='notification'>
-                        <button type="button" className="btn btn-outline-primary position-relative p-2">
-                            <i className="bi bi-envelope-fill"></i>
-                            <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                                99+
-                                <span className="visually-hidden">unread messages</span>
-                            </span>
-                        </button>
-                        <button type="button" className="btn btn-outline-warning p-2"><i className="bi bi-bus-front-fill"></i></button>
-                        <button type="button" className="btn btn-outline-danger p-2"><i className="bi bi-funnel-fill"></i></button>
+                        <form id='formBtnMenu'>
+                            <button type="button" className="btn btn-outline-primary position-relative p-2">
+                                <i className="bi bi-envelope-fill"></i>
+                                <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                    99+
+                                    <span className="visually-hidden">unread messages</span>
+                                </span>
+                            </button>
+                            <ModalBus/>
+                            <button type="button" className="btn btn-outline-danger p-2">
+                                <i className="bi bi-funnel-fill"></i>
+                            </button>
+                        </form>
                     </div>
                     <div className="offcanvas offcanvas-start" data-bs-scroll="true" data-bs-backdrop="false" id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
                         <div className="offcanvas-header">

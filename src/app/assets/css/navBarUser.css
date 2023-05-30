@@ -36,6 +36,6 @@ li{
     width: 30% !important;
 }
 
-#notification > button{
-    margin-left: 20px;
+#formBtnMenu > button{
+    margin-left: 25px;
 }
